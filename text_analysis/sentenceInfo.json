@@ -1,0 +1,134 @@
+{
+  "entities": [], 
+  "language": "en"
+}{
+  "documentSentiment": {
+    "magnitude": 0, 
+    "score": 0
+  }, 
+  "language": "en", 
+  "sentences": [
+    {
+      "text": {
+        "content": "Is going on.", 
+        "beginOffset": 0
+      }, 
+      "sentiment": {
+        "magnitude": 0, 
+        "score": 0
+      }
+    }
+  ]
+}{
+  "tokens": [
+    {
+      "text": {
+        "content": "Is", 
+        "beginOffset": 0
+      }, 
+      "dependencyEdge": {
+        "headTokenIndex": 1, 
+        "label": "AUX"
+      }, 
+      "partOfSpeech": {
+        "case": "CASE_UNKNOWN", 
+        "reciprocity": "RECIPROCITY_UNKNOWN", 
+        "mood": "INDICATIVE", 
+        "form": "FORM_UNKNOWN", 
+        "gender": "GENDER_UNKNOWN", 
+        "number": "SINGULAR", 
+        "person": "THIRD", 
+        "tag": "VERB", 
+        "tense": "PRESENT", 
+        "aspect": "ASPECT_UNKNOWN", 
+        "proper": "PROPER_UNKNOWN", 
+        "voice": "VOICE_UNKNOWN"
+      }, 
+      "lemma": "be"
+    }, 
+    {
+      "text": {
+        "content": "going", 
+        "beginOffset": 3
+      }, 
+      "dependencyEdge": {
+        "headTokenIndex": 1, 
+        "label": "ROOT"
+      }, 
+      "partOfSpeech": {
+        "case": "CASE_UNKNOWN", 
+        "reciprocity": "RECIPROCITY_UNKNOWN", 
+        "mood": "MOOD_UNKNOWN", 
+        "form": "FORM_UNKNOWN", 
+        "gender": "GENDER_UNKNOWN", 
+        "number": "NUMBER_UNKNOWN", 
+        "person": "PERSON_UNKNOWN", 
+        "tag": "VERB", 
+        "tense": "TENSE_UNKNOWN", 
+        "aspect": "ASPECT_UNKNOWN", 
+        "proper": "PROPER_UNKNOWN", 
+        "voice": "VOICE_UNKNOWN"
+      }, 
+      "lemma": "go"
+    }, 
+    {
+      "text": {
+        "content": "on", 
+        "beginOffset": 9
+      }, 
+      "dependencyEdge": {
+        "headTokenIndex": 1, 
+        "label": "PRT"
+      }, 
+      "partOfSpeech": {
+        "case": "CASE_UNKNOWN", 
+        "reciprocity": "RECIPROCITY_UNKNOWN", 
+        "mood": "MOOD_UNKNOWN", 
+        "form": "FORM_UNKNOWN", 
+        "gender": "GENDER_UNKNOWN", 
+        "number": "NUMBER_UNKNOWN", 
+        "person": "PERSON_UNKNOWN", 
+        "tag": "PRT", 
+        "tense": "TENSE_UNKNOWN", 
+        "aspect": "ASPECT_UNKNOWN", 
+        "proper": "PROPER_UNKNOWN", 
+        "voice": "VOICE_UNKNOWN"
+      }, 
+      "lemma": "on"
+    }, 
+    {
+      "text": {
+        "content": ".", 
+        "beginOffset": 11
+      }, 
+      "dependencyEdge": {
+        "headTokenIndex": 1, 
+        "label": "P"
+      }, 
+      "partOfSpeech": {
+        "case": "CASE_UNKNOWN", 
+        "reciprocity": "RECIPROCITY_UNKNOWN", 
+        "mood": "MOOD_UNKNOWN", 
+        "form": "FORM_UNKNOWN", 
+        "gender": "GENDER_UNKNOWN", 
+        "number": "NUMBER_UNKNOWN", 
+        "person": "PERSON_UNKNOWN", 
+        "tag": "PUNCT", 
+        "tense": "TENSE_UNKNOWN", 
+        "aspect": "ASPECT_UNKNOWN", 
+        "proper": "PROPER_UNKNOWN", 
+        "voice": "VOICE_UNKNOWN"
+      }, 
+      "lemma": "."
+    }
+  ], 
+  "language": "en", 
+  "sentences": [
+    {
+      "text": {
+        "content": "Is going on.", 
+        "beginOffset": 0
+      }
+    }
+  ]
+}
