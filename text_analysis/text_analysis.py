@@ -25,10 +25,28 @@ import googleapiclient.discovery
 from google.cloud import language_v1
 from google.cloud.language_v1 import enums
 import six
+
+import requests
+
+from watson_developer_cloud import NaturalLanguageUnderstandingV1
+from watson_developer_cloud.natural_language_understanding_v1 import Features,EntitiesOptions,KeywordsOptions
 # [END text_analysis imports]
 
 # GLOBAL VARIABLES
-numSentences=0
+naturalLanguageUnderstanding = NaturalLanguageUnderstandingV1(
+                                                              version='2018-11-16',
+                                                              iam_apikey='Jk2q3V3rmzrGTYtlp4tCZ8sTmQ2S8fkwZCyjn5LnvPPz',
+                                                              url='https://gateway.watsonplatform.net/natural-language-understanding/api/v1/analyze?version=2018-11-16')
+
+def get_IBM_tone(sentence):
+    response = naturalLanguageUnderstanding.analyze(
+                                                text=sentence,
+                                                features=Features(
+                                                            entities=EntitiesOptions(emotion=True, sentiment=True, limit=2),
+                                                            keywords=KeywordsOptions(emotion=True, sentiment=True,
+                                                            limit=2)),language='en').get_result()
+#print(json.dumps(response, indent=2))
+    return response
 
 def get_native_encoding_type():
     """Returns the encoding type that matches Python's native strings."""
@@ -85,32 +103,11 @@ def analyze_syntax(text, encoding='UTF32'):
 
     return response
 
-def analyze(content):
-    # [START language_sentiment_text_core]
-    
-    client = language_v1.LanguageServiceClient()
-    
-    # content = 'Your text to analyze, e.g. Hello, world!'
-    
-    if isinstance(content, six.binary_type):
-        content = content.decode('utf-8')
-    
-    type_ = enums.Document.Type.PLAIN_TEXT
-    document = {'type': type_, 'content': content}
-
-    response = client.analyze_sentiment(document)
-    sentiment = response.document_sentiment
-    print('Score: {}'.format(sentiment.score))
-    print('Magnitude: {}'.format(sentiment.magnitude))
-
-    # [END language_sentiment_text_core]
-
 # [START text_analysis run app]
 if __name__ == '__main__':
     filenameAllSentences = "all_sentences.txt"
     fileTotal = open(filenameAllSentences,"w")
     fileTotal.close()
-    numSentences = 0
     key = 0
     print("Press 's' to speak.")
 
@@ -119,21 +116,30 @@ if __name__ == '__main__':
         if(key=='s'):
             print("You may speak.\n")
             sentence = mic_speech.main()
-            numSentences += 1
             
+            #Get analysis results
             entities_result = analyze_entities(sentence, get_native_encoding_type())
             sentiment_result = analyze_sentiment(sentence, get_native_encoding_type())
             syntax_result = analyze_syntax(sentence, get_native_encoding_type())
+            tone_result = get_IBM_tone(sentence)
             
+            #Add to total sentences
             fileTotal = open(filenameAllSentences,"a+")
             fileTotal.write(sentence)
             fileTotal.close()
 
+            #Dump json results
             filename = ("sentenceInfo.json")
             fileInfo = open(filename,"w")
+            fileInfo.write("[")
             fileInfo.write(json.dumps(entities_result, indent=2))
+            fileInfo.write(",")
             fileInfo.write(json.dumps(sentiment_result, indent=2))
+            fileInfo.write(",")
             fileInfo.write(json.dumps(syntax_result, indent=2))
+            fileInfo.write(",")
+            fileInfo.write(json.dumps(tone_result, indent=2))
+            fileInfo.write("]")
             fileInfo.close()
             print("Press 's' to speak again or Press 'q' to quit.")
 

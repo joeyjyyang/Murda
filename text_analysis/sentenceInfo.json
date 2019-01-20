@@ -1,58 +1,108 @@
-{
+[{
   "entities": [], 
   "language": "en"
-}{
+},{
   "documentSentiment": {
-    "magnitude": 0, 
-    "score": 0
+    "magnitude": 0.2, 
+    "score": -0.2
   }, 
   "language": "en", 
   "sentences": [
     {
       "text": {
-        "content": "Is going on.", 
+        "content": "I cannot see if this works.", 
         "beginOffset": 0
       }, 
       "sentiment": {
-        "magnitude": 0, 
-        "score": 0
+        "magnitude": 0.2, 
+        "score": -0.2
       }
     }
   ]
-}{
+},{
   "tokens": [
     {
       "text": {
-        "content": "Is", 
+        "content": "I", 
         "beginOffset": 0
       }, 
       "dependencyEdge": {
-        "headTokenIndex": 1, 
+        "headTokenIndex": 3, 
+        "label": "NSUBJ"
+      }, 
+      "partOfSpeech": {
+        "case": "NOMINATIVE", 
+        "reciprocity": "RECIPROCITY_UNKNOWN", 
+        "mood": "MOOD_UNKNOWN", 
+        "form": "FORM_UNKNOWN", 
+        "gender": "GENDER_UNKNOWN", 
+        "number": "SINGULAR", 
+        "person": "FIRST", 
+        "tag": "PRON", 
+        "tense": "TENSE_UNKNOWN", 
+        "aspect": "ASPECT_UNKNOWN", 
+        "proper": "PROPER_UNKNOWN", 
+        "voice": "VOICE_UNKNOWN"
+      }, 
+      "lemma": "I"
+    }, 
+    {
+      "text": {
+        "content": "can", 
+        "beginOffset": 2
+      }, 
+      "dependencyEdge": {
+        "headTokenIndex": 3, 
         "label": "AUX"
       }, 
       "partOfSpeech": {
         "case": "CASE_UNKNOWN", 
         "reciprocity": "RECIPROCITY_UNKNOWN", 
-        "mood": "INDICATIVE", 
+        "mood": "MOOD_UNKNOWN", 
         "form": "FORM_UNKNOWN", 
         "gender": "GENDER_UNKNOWN", 
-        "number": "SINGULAR", 
-        "person": "THIRD", 
+        "number": "NUMBER_UNKNOWN", 
+        "person": "PERSON_UNKNOWN", 
         "tag": "VERB", 
-        "tense": "PRESENT", 
+        "tense": "TENSE_UNKNOWN", 
         "aspect": "ASPECT_UNKNOWN", 
         "proper": "PROPER_UNKNOWN", 
         "voice": "VOICE_UNKNOWN"
       }, 
-      "lemma": "be"
+      "lemma": "can"
     }, 
     {
       "text": {
-        "content": "going", 
-        "beginOffset": 3
+        "content": "not", 
+        "beginOffset": 5
       }, 
       "dependencyEdge": {
-        "headTokenIndex": 1, 
+        "headTokenIndex": 3, 
+        "label": "NEG"
+      }, 
+      "partOfSpeech": {
+        "case": "CASE_UNKNOWN", 
+        "reciprocity": "RECIPROCITY_UNKNOWN", 
+        "mood": "MOOD_UNKNOWN", 
+        "form": "FORM_UNKNOWN", 
+        "gender": "GENDER_UNKNOWN", 
+        "number": "NUMBER_UNKNOWN", 
+        "person": "PERSON_UNKNOWN", 
+        "tag": "ADV", 
+        "tense": "TENSE_UNKNOWN", 
+        "aspect": "ASPECT_UNKNOWN", 
+        "proper": "PROPER_UNKNOWN", 
+        "voice": "VOICE_UNKNOWN"
+      }, 
+      "lemma": "not"
+    }, 
+    {
+      "text": {
+        "content": "see", 
+        "beginOffset": 9
+      }, 
+      "dependencyEdge": {
+        "headTokenIndex": 3, 
         "label": "ROOT"
       }, 
       "partOfSpeech": {
@@ -69,16 +119,16 @@
         "proper": "PROPER_UNKNOWN", 
         "voice": "VOICE_UNKNOWN"
       }, 
-      "lemma": "go"
+      "lemma": "see"
     }, 
     {
       "text": {
-        "content": "on", 
-        "beginOffset": 9
+        "content": "if", 
+        "beginOffset": 13
       }, 
       "dependencyEdge": {
-        "headTokenIndex": 1, 
-        "label": "PRT"
+        "headTokenIndex": 6, 
+        "label": "MARK"
       }, 
       "partOfSpeech": {
         "case": "CASE_UNKNOWN", 
@@ -88,21 +138,71 @@
         "gender": "GENDER_UNKNOWN", 
         "number": "NUMBER_UNKNOWN", 
         "person": "PERSON_UNKNOWN", 
-        "tag": "PRT", 
+        "tag": "ADP", 
         "tense": "TENSE_UNKNOWN", 
         "aspect": "ASPECT_UNKNOWN", 
         "proper": "PROPER_UNKNOWN", 
         "voice": "VOICE_UNKNOWN"
       }, 
-      "lemma": "on"
+      "lemma": "if"
+    }, 
+    {
+      "text": {
+        "content": "this", 
+        "beginOffset": 16
+      }, 
+      "dependencyEdge": {
+        "headTokenIndex": 6, 
+        "label": "NSUBJ"
+      }, 
+      "partOfSpeech": {
+        "case": "CASE_UNKNOWN", 
+        "reciprocity": "RECIPROCITY_UNKNOWN", 
+        "mood": "MOOD_UNKNOWN", 
+        "form": "FORM_UNKNOWN", 
+        "gender": "GENDER_UNKNOWN", 
+        "number": "SINGULAR", 
+        "person": "PERSON_UNKNOWN", 
+        "tag": "DET", 
+        "tense": "TENSE_UNKNOWN", 
+        "aspect": "ASPECT_UNKNOWN", 
+        "proper": "PROPER_UNKNOWN", 
+        "voice": "VOICE_UNKNOWN"
+      }, 
+      "lemma": "this"
+    }, 
+    {
+      "text": {
+        "content": "works", 
+        "beginOffset": 21
+      }, 
+      "dependencyEdge": {
+        "headTokenIndex": 3, 
+        "label": "ADVCL"
+      }, 
+      "partOfSpeech": {
+        "case": "CASE_UNKNOWN", 
+        "reciprocity": "RECIPROCITY_UNKNOWN", 
+        "mood": "INDICATIVE", 
+        "form": "FORM_UNKNOWN", 
+        "gender": "GENDER_UNKNOWN", 
+        "number": "SINGULAR", 
+        "person": "THIRD", 
+        "tag": "VERB", 
+        "tense": "PRESENT", 
+        "aspect": "ASPECT_UNKNOWN", 
+        "proper": "PROPER_UNKNOWN", 
+        "voice": "VOICE_UNKNOWN"
+      }, 
+      "lemma": "work"
     }, 
     {
       "text": {
         "content": ".", 
-        "beginOffset": 11
+        "beginOffset": 26
       }, 
       "dependencyEdge": {
-        "headTokenIndex": 1, 
+        "headTokenIndex": 3, 
         "label": "P"
       }, 
       "partOfSpeech": {
@@ -126,9 +226,18 @@
   "sentences": [
     {
       "text": {
-        "content": "Is going on.", 
+        "content": "I cannot see if this works.", 
         "beginOffset": 0
       }
     }
   ]
-}
+},{
+  "usage": {
+    "text_characters": 27, 
+    "features": 2, 
+    "text_units": 1
+  }, 
+  "keywords": [], 
+  "language": "en", 
+  "entities": []
+}]
