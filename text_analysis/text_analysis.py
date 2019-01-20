@@ -35,8 +35,22 @@ from watson_developer_cloud.natural_language_understanding_v1 import Features,En
 # GLOBAL VARIABLES
 naturalLanguageUnderstanding = NaturalLanguageUnderstandingV1(
                                                               version='2018-11-16',
-                                                              iam_apikey='Jk2q3V3rmzrGTYtlp4tCZ8sTmQ2S8fkwZCyjn5LnvPPz',
+                                        iam_apikey='Jk2q3V3rmzrGTYtlp4tCZ8sTmQ2S8fkwZCyjn5LnvPPz',
                                                               url='https://gateway.watsonplatform.net/natural-language-understanding/api/v1/analyze?version=2018-11-16')
+
+def get_total_tone():
+    filename = "all_sentences.txt"
+    file_sentences = open(filename,"r")
+    #data = json.loads(file_sentences)
+    data = file_sentences.read()
+    print(data)
+    response = naturalLanguageUnderstanding.analyze(
+                                                text=data,
+                                                features=Features(
+                                                        entities=EntitiesOptions(emotion=True, sentiment=True, limit=2),
+                                                        keywords=KeywordsOptions(emotion=True, sentiment=True,
+                                                        limit=2)),language='en').get_result()
+    return response
 
 def get_IBM_tone(sentence):
     response = naturalLanguageUnderstanding.analyze(
@@ -104,44 +118,50 @@ def analyze_syntax(text, encoding='UTF32'):
     return response
 
 # [START text_analysis run app]
-if __name__ == '__main__':
+def main():
     filenameAllSentences = "all_sentences.txt"
-    fileTotal = open(filenameAllSentences,"w")
+#    key = 0
+#    print("Press 's' to speak.")
+
+#    while(key!='q'):
+#        key = click.getchar()
+#        if(key=='s'):
+#            print("You may speak.\n")
+    sentence = mic_speech.main()
+    
+    #Get analysis results
+    entities_result = analyze_entities(sentence, get_native_encoding_type())
+    sentiment_result = analyze_sentiment(sentence, get_native_encoding_type())
+    syntax_result = analyze_syntax(sentence, get_native_encoding_type())
+    tone_result = get_IBM_tone(sentence)
+    
+    #Add to total sentences
+    fileTotal = open(filenameAllSentences,"a+")
+    fileTotal.write(sentence+" ")
     fileTotal.close()
-    key = 0
-    print("Press 's' to speak.")
+    
+    total_tone_result = get_total_tone()
+ 
+    #Dump json results
+    filename = ("sentenceInfo.json")
+    fileInfo = open(filename,"w")
+    fileInfo.write("{ \"entries\":")
+    fileInfo.write(json.dumps(entities_result, indent=2))
+    fileInfo.write(",\"sentiment\":")
+    fileInfo.write(json.dumps(sentiment_result, indent=2))
+    fileInfo.write(",\"syntax\":")
+    fileInfo.write(json.dumps(syntax_result, indent=2))
+    fileInfo.write(",\"tone\":")
+    fileInfo.write(json.dumps(tone_result, indent=2))
+    fileInfo.write(",\"total_tone\":")
+    fileInfo.write(json.dumps(total_tone_result, indent=2))
+    fileInfo.write("}")
+    fileInfo.close()
+#            print("Press 's' to speak again or Press 'q' to quit.")
 
-    while(key!='q'):
-        key = click.getchar()
-        if(key=='s'):
-            print("You may speak.\n")
-            sentence = mic_speech.main()
-            
-            #Get analysis results
-            entities_result = analyze_entities(sentence, get_native_encoding_type())
-            sentiment_result = analyze_sentiment(sentence, get_native_encoding_type())
-            syntax_result = analyze_syntax(sentence, get_native_encoding_type())
-            tone_result = get_IBM_tone(sentence)
-            
-            #Add to total sentences
-            fileTotal = open(filenameAllSentences,"a+")
-            fileTotal.write(sentence)
-            fileTotal.close()
-
-            #Dump json results
-            filename = ("sentenceInfo.json")
-            fileInfo = open(filename,"w")
-            fileInfo.write("[")
-            fileInfo.write(json.dumps(entities_result, indent=2))
-            fileInfo.write(",")
-            fileInfo.write(json.dumps(sentiment_result, indent=2))
-            fileInfo.write(",")
-            fileInfo.write(json.dumps(syntax_result, indent=2))
-            fileInfo.write(",")
-            fileInfo.write(json.dumps(tone_result, indent=2))
-            fileInfo.write("]")
-            fileInfo.close()
-            print("Press 's' to speak again or Press 'q' to quit.")
+# [START text_analysis run app]
+if __name__ == '__main__':
+    main()
 
 # [END text_analysis run app]
 # [END text_analysis]
